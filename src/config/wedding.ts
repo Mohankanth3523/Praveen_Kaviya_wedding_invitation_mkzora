@@ -263,7 +263,7 @@ export const wedding: WeddingConfig = {
       'Full-length portrait of Kaviya in a gold-and-red silk saree and Praveen in a navy suit, both wearing lotus and jasmine garlands and holding a gift together.',
     ),
   },
-  audio: { src: null },
+  audio: { src: 'assets/audio/wedding-music.mp3' },
   pendingVerification: [
     {
       field: 'family.groom.parents',

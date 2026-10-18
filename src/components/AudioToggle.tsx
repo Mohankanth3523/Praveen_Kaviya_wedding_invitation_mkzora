@@ -1,42 +1,22 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
-import { AmbientAudio } from '../utils/ambientAudio';
-import { assetUrl } from '../utils/directions';
-import { wedding } from '../config/wedding';
+import { music, useMusicPlaying } from '../utils/music';
 
-/** Discreet, persistent sound control. Silent by default; starts only on click. */
+/** Discreet, persistent music control (top-right). */
 export function AudioToggle({ onMessage }: { onMessage: (text: string) => void }) {
-  const [on, setOn] = useState(false);
+  const on = useMusicPlaying();
   const [busy, setBusy] = useState(false);
-  const audio = useRef<AmbientAudio | null>(null);
 
   useEffect(() => {
-    const onVisibility = () => {
-      if (document.hidden && audio.current?.isRunning) {
-        audio.current.stop();
-        setOn(false);
-      }
-    };
-    document.addEventListener('visibilitychange', onVisibility);
-    return () => {
-      document.removeEventListener('visibilitychange', onVisibility);
-      audio.current?.dispose();
-    };
+    music.preload();
   }, []);
 
   const toggle = async () => {
     if (busy) return;
-    if (!audio.current) audio.current = new AmbientAudio(wedding.audio.src ? assetUrl(wedding.audio.src) : null);
-    if (on) {
-      audio.current.stop();
-      setOn(false);
-      return;
-    }
     setBusy(true);
-    const ok = await audio.current.start();
+    const ok = await music.toggle();
     setBusy(false);
-    setOn(ok);
-    if (!ok) onMessage('Sound could not be played on this device.');
+    if (!ok) onMessage('Music could not be played on this device.');
   };
 
   return (
@@ -44,8 +24,8 @@ export function AudioToggle({ onMessage }: { onMessage: (text: string) => void }
       type="button"
       onClick={toggle}
       aria-pressed={on}
-      aria-label={on ? 'Mute ambient sound' : 'Play ambient sound'}
-      title={on ? 'Mute ambient sound' : 'Play ambient sound'}
+      aria-label={on ? 'Mute music' : 'Play music'}
+      title={on ? 'Mute music' : 'Play music'}
       className="on-dark fixed right-3 top-3 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/50 bg-stone/60 text-ivory backdrop-blur-sm transition-colors hover:bg-stone/80 sm:right-5 sm:top-5"
     >
       {on ? <Volume2 size={18} aria-hidden="true" /> : <VolumeX size={18} aria-hidden="true" />}

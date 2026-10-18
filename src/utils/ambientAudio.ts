@@ -33,7 +33,8 @@ export class AmbientAudio {
     this.timers.forEach((id) => window.clearTimeout(id));
     this.timers = [];
     if (this.element) {
-      this.element.pause();
+      const el = this.element;
+      this.fadeTo(0, 600, () => el.pause());
     }
     if (this.ctx && this.master) {
       const now = this.ctx.currentTime;
@@ -51,14 +52,46 @@ export class AmbientAudio {
     this.ctx = null;
   }
 
+  /** Create the <audio> element early so the music is ready when the doors open. */
+  preload() {
+    if (this.src && !this.element) {
+      this.element = new Audio(this.src);
+      this.element.loop = true;
+      this.element.preload = 'auto';
+      this.element.volume = 0;
+    }
+  }
+
+  private fadeTimer: number | null = null;
+
+  private fadeTo(target: number, ms: number, done?: () => void) {
+    const el = this.element;
+    if (!el) return;
+    if (this.fadeTimer !== null) window.clearInterval(this.fadeTimer);
+    const start = el.volume;
+    const t0 = performance.now();
+    this.fadeTimer = window.setInterval(() => {
+      const k = Math.min(1, (performance.now() - t0) / ms);
+      el.volume = Math.max(0, Math.min(1, start + (target - start) * k));
+      if (k >= 1) {
+        if (this.fadeTimer !== null) window.clearInterval(this.fadeTimer);
+        this.fadeTimer = null;
+        done?.();
+      }
+    }, 40);
+  }
+
   private async startFile(src: string) {
     if (!this.element) {
       this.element = new Audio(src);
       this.element.loop = true;
-      this.element.volume = 0.5;
+      this.element.preload = 'auto';
     }
+    this.element.volume = 0;
+    // play() is called synchronously inside the click, which mobile browsers require.
     await this.element.play();
     this.running = true;
+    this.fadeTo(0.7, 1800);
     return true;
   }
 

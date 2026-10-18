@@ -216,11 +216,13 @@
 
   /* ---------- RSVP form ---------- */
   .rsvp-label {
-    @apply block font-rsvp text-[0.95rem] font-medium;
+    @apply block text-[0.95rem] font-medium;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     color: #35251f;
   }
   .rsvp-input {
-    @apply mt-2 block w-full rounded-[6px] font-rsvp text-[1rem];
+    @apply mt-2 block w-full rounded-[6px] text-[1rem];
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     min-height: 52px;
     padding: 0.75rem 1rem;
     color: #35251f;
@@ -238,7 +240,8 @@
   }
   .rsvp-card,
   .rsvp-chip {
-    @apply relative flex cursor-pointer select-none items-center rounded-[6px] font-rsvp transition-all duration-200;
+    @apply relative flex cursor-pointer select-none items-center rounded-[6px] transition-all duration-200;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     min-height: 52px;
     color: #35251f;
     background: #fffdf8;
@@ -303,7 +306,8 @@
     background: radial-gradient(circle, #a98442 0 4.5px, #fff 5px);
   }
   .rsvp-submit {
-    @apply inline-flex items-center justify-center gap-2 rounded-full font-rsvp font-semibold uppercase transition-all duration-300;
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold uppercase transition-all duration-300;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     min-width: min(100%, 17rem);
     min-height: 54px;
     padding: 0.9rem 2rem;

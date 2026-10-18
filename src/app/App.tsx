@@ -4,6 +4,7 @@ import { SITE_TITLE, wedding } from '../config/wedding';
 import { useInvitationSequence } from '../hooks/useInvitationSequence';
 import { useIsMobile, useReducedMotion } from '../hooks/useReducedMotion';
 import { detectDevice } from '../utils/device';
+import { music } from '../utils/music';
 import type { SequenceState } from '../scenes/sequence';
 import { AudioToggle } from '../components/AudioToggle';
 import { LoadingScreen, type StageStatus } from '../components/LoadingScreen';
@@ -18,6 +19,7 @@ import { Countdown } from '../components/Countdown';
 import { RitualsSection } from '../components/RitualsSection';
 import { Gallery } from '../components/Gallery';
 import { GuestNotes } from '../components/GuestNotes';
+import { DesignerCredit } from '../components/DesignerCredit';
 import { RsvpSection } from '../components/RsvpSection';
 import { SiteNav } from '../components/SiteNav';
 import { BackToTop } from '../components/BackToTop';
@@ -44,6 +46,11 @@ export default function App() {
   const [toast, setToast] = useState<string | null>(null);
   const [loaderDone, setLoaderDone] = useState(false);
   const finishLoader = useCallback(() => setLoaderDone(true), []);
+  // The music begins with the doors opening (this click is the visitor's permission to play sound).
+  const openInvitation = useCallback(() => {
+    music.startWithInvitation();
+    seq.open();
+  }, [seq]);
   const [stageVisible, setStageVisible] = useState(true);
   const stageRef = useRef<HTMLElement>(null);
   const scrollFocus = useRef<HTMLDivElement>(null);
@@ -148,7 +155,7 @@ export default function App() {
           </div>
           <div className="stage-vignette pointer-events-none absolute inset-0" aria-hidden="true" />
 
-          <IntroOverlay visible={introVisible} reducedMotion={reducedMotion} onOpen={seq.open} />
+          <IntroOverlay visible={introVisible} reducedMotion={reducedMotion} onOpen={openInvitation} />
 
           {/* Reduced motion: a brief veil replaces the camera journey. */}
           <AnimatePresence>
@@ -190,6 +197,7 @@ export default function App() {
         <p className="display-names gold-foil mt-6 pb-1 text-[clamp(2.2rem,1.8rem+2vw,3.2rem)]">{wedding.couple.short}</p>
         <p className="mt-2 font-caps text-[0.85rem] tracking-[0.2em] text-ivory/85">{wedding.dateLabel}</p>
         <p className="mt-1 font-caps text-[0.75rem] tracking-[0.2em] text-gold-light/80">Vaniyambadi · Tamil Nadu</p>
+        <DesignerCredit />
       </footer>
 
       <BackToTop />
