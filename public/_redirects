@@ -1,0 +1,3 @@
+# Intentionally empty.
+# Cloudflare Pages already serves index.html for unknown paths (single-page app),
+# and a catch-all rule here could shadow the /api/rsvp function.
