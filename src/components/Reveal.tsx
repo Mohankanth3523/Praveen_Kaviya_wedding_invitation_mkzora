@@ -20,7 +20,7 @@ export function Reveal({ children, delay = 0, className = '' }: { children: Reac
 export function SectionHeading({ id, eyebrow, title, tone = 'burgundy' }: { id: string; eyebrow?: string; title: string; tone?: 'burgundy' | 'ivory' }) {
   return (
     <div className="text-center">
-      {eyebrow && <p className={`eyebrow ${tone === 'ivory' ? 'text-gold-light' : 'text-burgundy/75'}`}>{eyebrow}</p>}
+      {eyebrow && <p className={`eyebrow ${tone === 'ivory' ? 'text-gold-dark' : 'text-burgundy'}`}>{eyebrow}</p>}
       <h2
         id={id}
         className={`mt-3 font-caps uppercase tracking-[0.18em] text-[clamp(1.6rem,1.2rem+1.8vw,2.6rem)] ${

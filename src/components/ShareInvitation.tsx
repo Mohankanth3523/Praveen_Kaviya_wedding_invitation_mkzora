@@ -37,7 +37,7 @@ export function ShareInvitation({
             readOnly
             value={manualUrl}
             onFocus={(e) => e.currentTarget.select()}
-            className="w-full rounded border border-gold/60 bg-ivory px-2 py-1 text-center text-burgundy"
+            className="w-full rounded border border-rose-line bg-panel px-2 py-1 text-center text-burgundy"
           />
         </label>
       )}

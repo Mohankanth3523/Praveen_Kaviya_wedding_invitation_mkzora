@@ -7,8 +7,9 @@ import { ShareInvitation } from './ShareInvitation';
 export function FamilySection({ onMessage }: { onMessage: (text: string) => void }) {
   const { family } = wedding;
   return (
-    <section id="family" aria-labelledby="family-title" className="ivory-silk kolam-bg scroll-mt-16 border-t border-gold/40 px-4 pb-[clamp(4rem,10vw,6rem)] pt-[clamp(4rem,10vw,7rem)]">
-      <div className="mx-auto max-w-4xl">
+    <section id="family" aria-labelledby="family-title" className="surface-sunset toran-top relative scroll-mt-16 border-t border-petal px-4 pb-[clamp(4rem,10vw,6rem)] pt-[clamp(4rem,10vw,7rem)]">
+      <div className="kolam-bg pointer-events-none absolute inset-0 opacity-70" aria-hidden="true" />
+      <div className="relative mx-auto max-w-4xl">
         <Reveal>
           <SectionHeading id="family-title" eyebrow="Seeking your blessings" title={family.heading} />
           <Divider className="mx-auto mt-5 h-5 w-60" />
@@ -41,12 +42,12 @@ export function FamilySection({ onMessage }: { onMessage: (text: string) => void
 function PersonCard({ person }: { person: Person }) {
   return (
     <div className="px-2">
-      <p className="font-caps text-[0.78rem] uppercase tracking-[0.26em] text-burgundy/75">{person.role}</p>
+      <p className="font-caps text-[0.78rem] uppercase tracking-[0.26em] text-gold-dark">{person.role}</p>
       <p className="mt-2 font-display text-[clamp(1.7rem,1.4rem+1.2vw,2.2rem)] font-semibold leading-tight text-burgundy">{person.name}</p>
-      {person.qualifications && <p className="mt-1 font-caps tracking-[0.08em] text-burgundy/85">{person.qualifications}</p>}
+      {person.qualifications && <p className="mt-1 font-caps tracking-[0.08em] text-burgundy">{person.qualifications}</p>}
       {person.parents.length > 0 && <div className="mx-auto my-3 h-px w-16 bg-gold/60" aria-hidden="true" />}
       {person.parents.map((line) => (
-        <p key={line} className="italic text-burgundy/90">
+        <p key={line} className="italic text-ink">
           {line}
         </p>
       ))}

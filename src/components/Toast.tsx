@@ -8,7 +8,7 @@ export function Toast({ message }: { message: string | null }) {
         {message && (
           <motion.p
             key={message}
-            className="max-w-sm rounded-full border border-gold/50 bg-stone/95 px-5 py-3 text-center text-[0.95rem] text-ivory shadow-xl"
+            className="max-w-sm rounded-full border border-gold/50 bg-panel px-5 py-3 text-center text-[0.95rem] text-ink shadow-[0_16px_36px_-18px_rgba(117,68,87,0.6)]"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}

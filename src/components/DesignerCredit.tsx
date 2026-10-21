@@ -14,16 +14,16 @@ const STUDIO = {
 export function DesignerCredit() {
   const whatsapp = `https://wa.me/${STUDIO.whatsappNumber}?text=${encodeURIComponent(STUDIO.whatsappMessage)}`;
   return (
-    <div className="mx-auto mt-10 max-w-xl border-t border-gold/30 pt-8">
-      <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 font-caps text-[0.95rem] uppercase tracking-[0.18em] text-ivory/90 sm:text-[1.02rem]">
+    <div className="mx-auto mt-10 max-w-xl border-t border-petal pt-8">
+      <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 font-caps text-[0.95rem] uppercase tracking-[0.18em] text-burgundy sm:text-[1.02rem]">
         Digital invitation made with
-        <Heart size={17} className="fill-[#e0596b] text-[#e0596b]" aria-label="love" role="img" />
+        <Heart size={17} className="fill-[#C9506A] text-[#C9506A]" aria-label="love" role="img" />
         by
         <a
           href={STUDIO.website}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-semibold tracking-[0.24em] text-gold-light underline decoration-gold/50 underline-offset-4 transition-colors hover:text-amber-lamp"
+          className="font-semibold tracking-[0.24em] text-gold-dark underline decoration-gold/60 underline-offset-4 transition-colors hover:text-burgundy"
         >
           {STUDIO.name}
         </a>
@@ -33,19 +33,19 @@ export function DesignerCredit() {
           href={STUDIO.website}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-[46px] items-center gap-2 rounded-full border border-gold/60 px-5 text-[1rem] text-ivory transition-colors hover:border-gold-light hover:bg-white/5"
+          className="inline-flex min-h-[46px] items-center gap-2 rounded-full border border-rose-line bg-panel/80 px-5 text-[1rem] text-burgundy transition-colors hover:border-gold hover:bg-blush"
         >
-          <Globe size={18} className="text-gold-light" aria-hidden="true" />
+          <Globe size={18} className="text-gold-dark" aria-hidden="true" />
           {STUDIO.websiteLabel}
         </a>
         <a
           href={whatsapp}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-[46px] items-center gap-2 rounded-full border border-gold/60 px-5 text-[1rem] text-ivory transition-colors hover:border-gold-light hover:bg-white/5"
+          className="inline-flex min-h-[46px] items-center gap-2 rounded-full border border-rose-line bg-panel/80 px-5 text-[1rem] text-burgundy transition-colors hover:border-gold hover:bg-blush"
           aria-label={`Chat with ${STUDIO.name} on WhatsApp, ${STUDIO.phoneDisplay}`}
         >
-          <MessageCircle size={18} className="text-gold-light" aria-hidden="true" />
+          <MessageCircle size={18} className="text-gold-dark" aria-hidden="true" />
           {STUDIO.phoneDisplay}
         </a>
       </div>

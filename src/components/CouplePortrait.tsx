@@ -18,22 +18,22 @@ export function CouplePortrait() {
     <section
       id="couple"
       aria-labelledby="couple-title"
-      className="maroon-damask on-dark relative scroll-mt-16 overflow-hidden px-4 py-[clamp(4rem,10vw,7rem)]"
+      className="surface-white relative scroll-mt-16 overflow-hidden px-4 py-[clamp(4rem,10vw,7rem)]"
     >
       <div className="mx-auto max-w-6xl">
         <Reveal className="text-center">
-          <p className="eyebrow text-gold-light">The Couple</p>
+          <p className="eyebrow text-gold-dark">The Couple</p>
           <h2 id="couple-title" className="display-names gold-foil mt-3 pb-2 text-[clamp(2.8rem,1.9rem+4.4vw,5.2rem)]">
             {wedding.couple.groomShort} <span className="not-italic">&amp;</span> {wedding.couple.brideShort}
           </h2>
-          <Divider className="mx-auto mt-4 h-5 w-60" tone="light" />
+          <Divider className="mx-auto mt-4 h-5 w-60" />
         </Reveal>
 
         <motion.div
           ref={frame}
-          className="frame-double relative mx-auto mt-10 max-w-5xl overflow-hidden bg-[#3a0c13] p-[10px] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]"
-          initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          className="frame-double relative mx-auto mt-10 max-w-5xl overflow-hidden rounded-[6px] bg-blush p-[10px] shadow-[0_40px_80px_-40px_rgba(117,68,87,0.55)]"
+          initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.98, clipPath: 'inset(12% 18% 12% 18% round 8px)' }}
+          whileInView={{ opacity: 1, scale: 1, clipPath: 'inset(0% 0% 0% 0% round 6px)' }}
           viewport={{ once: true, margin: '0px 0px -15% 0px' }}
           transition={{ duration: reduced ? 0.3 : 1.4, ease: [0.22, 1, 0.36, 1] }}
         >
@@ -45,7 +45,7 @@ export function CouplePortrait() {
         </motion.div>
 
         <Reveal className="mt-8 text-center" delay={0.1}>
-          <p className="eyebrow text-gold-light">{wedding.portraitCaption}</p>
+          <p className="eyebrow text-gold-dark">{wedding.portraitCaption}</p>
         </Reveal>
 
       </div>

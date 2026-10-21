@@ -30,24 +30,24 @@ export function Countdown() {
   ];
 
   return (
-    <section aria-labelledby="countdown-title" className="ivory-silk px-4 py-[clamp(3.5rem,8vw,5.5rem)] text-center">
+    <section aria-labelledby="countdown-title" className="surface-ruby px-4 py-[clamp(3.5rem,8vw,5.5rem)] text-center">
       <Reveal className="mx-auto max-w-4xl">
-        <p className="eyebrow text-burgundy/75">Counting the moments</p>
-        <h2 id="countdown-title" className="mt-2 font-caps text-[clamp(1.3rem,1.05rem+1vw,1.9rem)] uppercase tracking-[0.2em] text-burgundy">
+        <p className="eyebrow text-[#F6D98E]">Counting the moments</p>
+        <h2 id="countdown-title" className="mt-2 font-caps text-[clamp(1.3rem,1.05rem+1vw,1.9rem)] uppercase tracking-[0.2em] text-[#FFF4E6]">
           Until the Muhurtham
         </h2>
         <div className="frieze mx-auto mt-5 w-64" aria-hidden="true" />
         {r.done ? (
-          <p className="mt-8 font-display text-3xl italic text-burgundy">The blessed day is here.</p>
+          <p className="mt-8 font-display text-3xl italic text-[#FFF4E6]">The blessed day is here.</p>
         ) : (
           <>
             <div className="mx-auto mt-9 grid max-w-2xl grid-cols-4 gap-2 sm:gap-5" aria-hidden="true">
               {units.map(([label, value]) => (
-                <div key={label} className="frame-double bg-ivory/70 px-1 py-4 sm:py-6">
+                <div key={label} className="frame-double rounded-[10px] bg-panel px-1 py-4 shadow-petal sm:py-6">
                   <div className="numeral gold-foil-dark text-[clamp(2rem,1.4rem+3vw,3.6rem)] font-semibold leading-none">
                     {String(value).padStart(2, '0')}
                   </div>
-                  <div className="mt-2 font-caps text-[0.6rem] uppercase tracking-[0.2em] text-burgundy/80 sm:text-[0.7rem]">{label}</div>
+                  <div className="mt-2 font-caps text-[0.6rem] uppercase tracking-[0.2em] text-burgundy sm:text-[0.7rem]">{label}</div>
                 </div>
               ))}
             </div>
@@ -56,7 +56,7 @@ export function Countdown() {
             </p>
           </>
         )}
-        <p className="mt-7 font-caps text-[0.95rem] tracking-[0.1em] text-burgundy">
+        <p className="mt-7 font-caps text-[0.95rem] tracking-[0.1em] text-[#FFE9C2]">
           {wedding.dateLabel} · {wedding.ceremony.timeRange}
         </p>
       </Reveal>

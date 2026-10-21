@@ -65,7 +65,7 @@ export function LoadingScreen({ status, onDone }: { status: StageStatus; onDone:
       {visible && (
         <motion.div
           key="loader"
-          className="maroon-damask on-dark fixed inset-0 z-[70] flex flex-col items-center justify-center px-6 text-center"
+          className="blush-hero fixed inset-0 z-[70] flex flex-col items-center justify-center px-6 text-center"
           exit={{ opacity: 0, transition: { duration: 1.0, ease: [0.65, 0, 0.35, 1] } }}
           role="progressbar"
           aria-label="Loading the wedding invitation"
@@ -73,9 +73,10 @@ export function LoadingScreen({ status, onDone }: { status: StageStatus; onDone:
           aria-valuemax={100}
           aria-valuenow={percent}
         >
-          {/* Inner double frame */}
-          <div className="pointer-events-none absolute inset-4 border border-gold/40 sm:inset-8" aria-hidden="true" />
-          <div className="pointer-events-none absolute inset-[22px] border border-gold/20 sm:inset-[38px]" aria-hidden="true" />
+          {/* Kolam texture and inner double frame */}
+          <div className="kolam-overlay" aria-hidden="true" />
+          <div className="pointer-events-none absolute inset-4 border border-gold/50 sm:inset-8" aria-hidden="true" />
+          <div className="pointer-events-none absolute inset-[22px] border border-petal sm:inset-[38px]" aria-hidden="true" />
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -85,14 +86,14 @@ export function LoadingScreen({ status, onDone }: { status: StageStatus; onDone:
           >
             <div className="relative">
               <motion.div
-                className="absolute inset-0 -z-10 rounded-full bg-amber-lamp/25 blur-2xl"
+                className="absolute inset-0 -z-10 rounded-full bg-[#FFE7C2]/80 blur-2xl"
                 animate={{ opacity: [0.35, 0.8, 0.35], scale: [0.9, 1.1, 0.9] }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
               />
               <Crest className="h-16 w-24 sm:h-20 sm:w-28" />
             </div>
 
-            <p className="eyebrow mt-6 text-gold-light">{wedding.invitation.blessing}</p>
+            <p className="eyebrow mt-6 text-gold-dark">{wedding.invitation.blessing}</p>
             <p className="display-names gold-foil mt-3 pb-1 text-[clamp(2.6rem,1.8rem+4vw,4.4rem)]">{wedding.couple.short}</p>
 
             <div className="numeral gold-foil mt-8 text-[clamp(3rem,2.2rem+3.5vw,4.6rem)] font-semibold leading-none" aria-hidden="true">
@@ -101,20 +102,20 @@ export function LoadingScreen({ status, onDone }: { status: StageStatus; onDone:
             </div>
 
             {/* Gold progress line with a travelling glint */}
-            <div className="relative mt-6 h-px w-[min(18rem,70vw)] bg-gold/25" aria-hidden="true">
+            <div className="relative mt-6 h-px w-[min(18rem,70vw)] bg-petal" aria-hidden="true">
               <div
                 className="absolute inset-y-0 left-0 bg-gradient-to-r from-gold-dark via-gold-light to-gold"
                 style={{ width: `${percent}%`, transition: 'width 120ms linear' }}
               />
               <div
-                className="absolute -top-[3px] h-[7px] w-[7px] -translate-x-1/2 rotate-45 bg-gold-light shadow-[0_0_12px_rgba(255,199,107,0.9)]"
+                className="absolute -top-[3px] h-[7px] w-[7px] -translate-x-1/2 rotate-45 bg-gold shadow-[0_0_12px_rgba(217,188,133,0.95)]"
                 style={{ left: `${percent}%`, transition: 'left 120ms linear' }}
               />
               <span className="absolute -left-1 -top-[3px] h-[7px] w-[7px] rotate-45 border border-gold/70" />
               <span className="absolute -right-1 -top-[3px] h-[7px] w-[7px] rotate-45 border border-gold/70" />
             </div>
 
-            <p className="mt-5 font-caps text-[0.72rem] uppercase tracking-[0.32em] text-ivory/75">
+            <p className="mt-5 font-caps text-[0.72rem] uppercase tracking-[0.32em] text-burgundy">
               Loading invitation
             </p>
           </motion.div>

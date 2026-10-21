@@ -159,9 +159,9 @@ export function RsvpSection() {
   const saving = phase === 'saving';
 
   return (
-    <section id="rsvp" aria-labelledby="rsvp-title" className="ivory-silk scroll-mt-16 px-4 py-[clamp(4rem,10vw,7rem)]">
+    <section id="rsvp" aria-labelledby="rsvp-title" className="surface-white scroll-mt-16 px-4 py-[clamp(4rem,10vw,7rem)]">
       <Reveal className="mx-auto max-w-3xl">
-        <div className="frame-double relative bg-[#FFF9F0]/90 px-5 pb-10 pt-12 shadow-[0_30px_70px_-40px_rgba(61,16,32,0.55)] sm:px-12 sm:pb-12">
+        <div className="frame-double relative rounded-[14px] bg-panel px-5 pb-10 pt-12 shadow-petal-lg sm:px-12 sm:pb-12">
           <FramedCorners inset="inset-3" />
 
           {/* Header */}
@@ -170,21 +170,21 @@ export function RsvpSection() {
             <p className="mt-4 font-caps text-[clamp(1.05rem,0.9rem+0.8vw,1.4rem)] uppercase tracking-[0.3em] text-burgundy">
               {wedding.couple.short}
             </p>
-            <p className="mt-1 font-display text-[1.2rem] italic text-[#A98442]">Wedding Celebration</p>
+            <p className="mt-1 font-display text-[1.2rem] italic text-gold-dark">Wedding Celebration</p>
             <h2 id="rsvp-title" className="gold-foil-dark mt-4 pb-1 font-display text-[clamp(2rem,1.5rem+2.4vw,3rem)] font-semibold leading-tight">
               Kindly Confirm Your Presence
             </h2>
-            <p className="mx-auto mt-3 max-w-md font-display text-[1.15rem] italic leading-relaxed text-[#35251F]/85">
+            <p className="mx-auto mt-3 max-w-md font-display text-[1.15rem] italic leading-relaxed text-ink">
               “Your presence will make our special day even more memorable.”
             </p>
             <div className="frieze mx-auto mt-6 w-60" aria-hidden="true" />
-            <div className="mx-auto mt-6 grid max-w-xl gap-4 text-left font-rsvp text-[0.95rem] text-[#35251F] sm:grid-cols-2">
+            <div className="mx-auto mt-6 grid max-w-xl gap-4 text-left font-rsvp text-[0.95rem] text-ink sm:grid-cols-2">
               <p className="flex items-start gap-2">
-                <CalendarDays size={18} className="mt-0.5 shrink-0 text-[#A98442]" aria-hidden="true" />
+                <CalendarDays size={18} className="mt-0.5 shrink-0 text-gold-dark" aria-hidden="true" />
                 <span>{wedding.dateLabel}</span>
               </p>
               <p className="flex items-start gap-2">
-                <MapPin size={18} className="mt-0.5 shrink-0 text-[#A98442]" aria-hidden="true" />
+                <MapPin size={18} className="mt-0.5 shrink-0 text-gold-dark" aria-hidden="true" />
                 <span>
                   <span className="font-semibold">Reception · {wedding.reception.venue.name}</span>
                   <br />
@@ -207,7 +207,7 @@ export function RsvpSection() {
                   aria-live="polite"
                 >
                   <motion.span
-                    className="inline-flex h-20 w-20 items-center justify-center rounded-full border border-[#D6B36A] bg-[#FFF9F0] text-[#A98442] shadow-[0_0_0_6px_rgba(214,179,106,0.15)]"
+                    className="inline-flex h-20 w-20 items-center justify-center rounded-full border border-gold/70 bg-blush text-gold-dark shadow-[0_0_0_6px_rgba(245,211,223,0.6)]"
                     initial={reduced ? false : { scale: 0.6, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ delay: 0.15, type: 'spring', stiffness: 180, damping: 14 }}
@@ -217,20 +217,20 @@ export function RsvpSection() {
                   {result.status === 'Confirmed' ? (
                     <>
                       <h3 className="gold-foil-dark mt-6 pb-1 font-display text-[2.6rem] font-semibold">Thank You!</h3>
-                      <p className="mt-2 max-w-md font-display text-[1.25rem] italic leading-relaxed text-[#35251F]">
+                      <p className="mt-2 max-w-md font-display text-[1.25rem] italic leading-relaxed text-ink">
                         {RSVP_MESSAGES.confirmed}
                       </p>
                     </>
                   ) : (
                     <>
                       <h3 className="gold-foil-dark mt-6 pb-1 font-display text-[2.6rem] font-semibold">Thank You</h3>
-                      <p className="mt-2 max-w-md font-display text-[1.25rem] italic leading-relaxed text-[#35251F]">
+                      <p className="mt-2 max-w-md font-display text-[1.25rem] italic leading-relaxed text-ink">
                         {RSVP_MESSAGES.declined}
                       </p>
                     </>
                   )}
-                  <p className="mt-5 font-rsvp text-[0.8rem] tracking-wide text-[#35251F]/60">Reference {result.id}</p>
-                  <button type="button" onClick={reset} className="mt-6 font-rsvp text-[0.9rem] text-burgundy underline decoration-[#D6B36A] underline-offset-4 hover:text-[#3D1020]">
+                  <p className="mt-5 font-rsvp text-[0.8rem] tracking-wide text-ink/85">Reference {result.id}</p>
+                  <button type="button" onClick={reset} className="mt-6 font-rsvp text-[0.9rem] text-burgundy underline decoration-gold underline-offset-4 hover:text-burgundy-deep">
                     Respond for another guest
                   </button>
                 </motion.div>
@@ -240,7 +240,7 @@ export function RsvpSection() {
                   ref={formRef}
                   noValidate
                   onSubmit={submit}
-                  className="space-y-9 font-rsvp text-[#35251F]"
+                  className="space-y-9 font-rsvp text-ink"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -334,7 +334,7 @@ export function RsvpSection() {
                         );
                       })}
                     </div>
-                    <p id={`${ids}-guests-note`} className="mt-2 text-[0.85rem] text-[#35251F]/70">
+                    <p id={`${ids}-guests-note`} className="mt-2 text-[0.85rem] text-ink/90">
                       {declined
                         ? 'Set to “None” automatically, because you are unable to attend.'
                         : 'Include yourself. “None” is only used when you are unable to attend.'}
@@ -369,7 +369,7 @@ export function RsvpSection() {
                         );
                       })}
                     </div>
-                    <p id={`${ids}-food-note`} className="mt-2 text-[0.85rem] text-[#35251F]/70">
+                    <p id={`${ids}-food-note`} className="mt-2 text-[0.85rem] text-ink/90">
                       {declined ? 'Set to “Not Coming” automatically, because you are unable to attend.' : 'Choose Vegetarian or Non-Vegetarian.'}
                     </p>
                     <FieldError id={`${ids}-food-error`} message={errors.food} />
@@ -411,7 +411,7 @@ export function RsvpSection() {
                       )}
                     </button>
                   </div>
-                  <p className="text-center text-[0.8rem] text-[#35251F]/60">
+                  <p className="text-center text-[0.8rem] text-ink/85">
                     Your name and reply are shared only with the family.
                   </p>
                 </motion.form>
@@ -461,7 +461,7 @@ function OptionCard({
     <label className={`rsvp-card ${checked ? 'rsvp-selected' : ''} ${disabled ? 'rsvp-disabled' : ''} ${invalid ? 'rsvp-invalid' : ''}`}>
       <input type="radio" name={name} checked={checked} disabled={disabled} onChange={onChange} className="sr-only" />
       <span className="rsvp-dot" aria-hidden="true" />
-      <span className="text-[#A98442]">{icon}</span>
+      <span className="text-gold-dark">{icon}</span>
       <span className="flex-1">{children}</span>
     </label>
   );

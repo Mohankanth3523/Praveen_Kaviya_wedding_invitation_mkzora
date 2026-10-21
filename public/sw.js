@@ -1,5 +1,5 @@
 /* Minimal offline cache: pages network-first, static files cache-first. */
-const CACHE = 'pk-invitation-v1';
+const CACHE = 'pk-invitation-v2'; // bumped for the blush redesign so old cached files are cleared
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(['./', './index.html'])).catch(() => undefined));

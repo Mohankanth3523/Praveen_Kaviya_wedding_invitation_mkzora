@@ -10,7 +10,7 @@ const ICONS = [Sunrise, CalendarHeart, MapPinned];
 export function GuestNotes({ onMessage }: { onMessage: (text: string) => void }) {
   const { guestNotes, ceremony, reception } = wedding;
   return (
-    <section id="guests" aria-labelledby="guests-title" className="ivory-silk scroll-mt-16 px-4 py-[clamp(4rem,10vw,6.5rem)]">
+    <section id="guests" aria-labelledby="guests-title" className="surface-ivory toran-top scroll-mt-16 px-4 py-[clamp(4rem,10vw,6.5rem)]">
       <div className="mx-auto max-w-5xl">
         <Reveal>
           <SectionHeading id="guests-title" eyebrow="With warm regards" title={guestNotes.heading} />
@@ -22,12 +22,14 @@ export function GuestNotes({ onMessage }: { onMessage: (text: string) => void })
             return (
               <li key={note.title}>
                 <Reveal delay={i * 0.1} className="h-full">
-                  <div className="frame-double flex h-full flex-col items-center bg-ivory/80 px-6 py-8 text-center">
-                    <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-gold/60 text-gold-dark">
+                  <div className="card-petal flex h-full flex-col items-center px-6 py-8 text-center">
+                    <span
+                      className={`inline-flex h-14 w-14 items-center justify-center rounded-full border border-gold/60 jewel-chip ${['jewel-1', 'jewel-2', 'jewel-3'][i % 3]}`}
+                    >
                       <Icon size={24} aria-hidden="true" />
                     </span>
                     <h3 className="mt-4 font-caps text-[1rem] uppercase tracking-[0.16em] text-burgundy">{note.title}</h3>
-                    <p className="mt-3 flex-1 leading-relaxed text-burgundy/90">{note.text}</p>
+                    <p className="mt-3 flex-1 leading-relaxed text-ink">{note.text}</p>
                     {i === 1 && (
                       <div className="mt-5">
                         <CalendarDownload onMessage={onMessage} variant="outline" />

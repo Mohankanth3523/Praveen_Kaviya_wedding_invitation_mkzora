@@ -26,7 +26,7 @@ export function AudioToggle({ onMessage }: { onMessage: (text: string) => void }
       aria-pressed={on}
       aria-label={on ? 'Mute music' : 'Play music'}
       title={on ? 'Mute music' : 'Play music'}
-      className="on-dark fixed right-3 top-3 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/50 bg-stone/60 text-ivory backdrop-blur-sm transition-colors hover:bg-stone/80 sm:right-5 sm:top-5"
+      className="fixed right-3 top-3 z-[70] inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/70 bg-blush text-burgundy shadow-[0_6px_18px_-10px_rgba(117,68,87,0.6)] transition-colors hover:border-gold hover:bg-blush-rose sm:right-5 sm:top-5"
     >
       {on ? <Volume2 size={18} aria-hidden="true" /> : <VolumeX size={18} aria-hidden="true" />}
     </button>

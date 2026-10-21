@@ -68,7 +68,7 @@ export function InvitationScroll({ mode, reducedMotion, tilt }: Props) {
         {/* Cast shadow on the mandapam floor. */}
         <div
           aria-hidden="true"
-          className="absolute -bottom-10 left-1/2 h-10 w-[85%] -translate-x-1/2 rounded-[50%] bg-black/45 blur-xl"
+          className="absolute -bottom-10 left-1/2 h-10 w-[85%] -translate-x-1/2 rounded-[50%] bg-[#754457]/25 blur-xl"
         />
 
         {/* Rollers travel from the centre seam to the edges as it unrolls. */}
@@ -77,7 +77,7 @@ export function InvitationScroll({ mode, reducedMotion, tilt }: Props) {
 
         <motion.article
           aria-labelledby="scroll-names"
-          className="paper gold-frame relative overflow-hidden px-6 pb-9 pt-9 text-center shadow-[0_30px_60px_-25px_rgba(0,0,0,0.75),0_0_0_1px_rgba(157,121,87,0.25)] sm:px-12 sm:pb-11 sm:pt-11"
+          className="paper gold-frame relative overflow-hidden px-6 pb-9 pt-9 text-center shadow-[0_30px_60px_-25px_rgba(117,68,87,0.55),0_0_0_1px_rgba(181,138,69,0.35)] sm:px-12 sm:pb-11 sm:pt-11"
           initial={instant ? false : { clipPath: 'inset(49.5% 0% 49.5% 0%)' }}
           animate={{ clipPath: 'inset(0% 0% 0% 0%)' }}
           transition={{ duration: unfold, ease: EASE, delay: instant ? 0 : 0.35 }}
@@ -89,7 +89,7 @@ export function InvitationScroll({ mode, reducedMotion, tilt }: Props) {
           />
           <motion.div {...item(0)}>
             <Crest className="mx-auto h-10 w-16 sm:h-12 sm:w-20" />
-            <p className="eyebrow mt-3 text-burgundy/85">{wedding.invitation.blessing}</p>
+            <p className="eyebrow mt-3 text-gold-dark">{wedding.invitation.blessing}</p>
           </motion.div>
           <motion.h2
             id="scroll-names"
@@ -108,14 +108,14 @@ export function InvitationScroll({ mode, reducedMotion, tilt }: Props) {
             <Divider className="mx-auto my-5 h-5 w-52 sm:w-64" />
             <p className="eyebrow text-burgundy">{wedding.ceremony.heading}</p>
             <p className="mt-2 font-caps text-[1.05rem] tracking-[0.06em] text-burgundy">{wedding.dateLabel}</p>
-            <p className="mt-1 text-burgundy/90">
+            <p className="mt-1 text-ink">
               <span className="font-caps text-[0.85rem] uppercase tracking-[0.16em]">{wedding.ceremony.timeLabel}</span>{' '}
               <span aria-hidden="true">·</span> {wedding.ceremony.timeRange}
             </p>
             <p className="mt-2 font-display text-[1.25rem] font-semibold leading-snug text-burgundy">
               {wedding.ceremony.venue.name}
             </p>
-            <p className="text-[0.98rem] text-burgundy/85">{wedding.ceremony.venue.addressLines[0]}</p>
+            <p className="text-[0.98rem] text-ink">{wedding.ceremony.venue.addressLines[0]}</p>
           </motion.div>
           <motion.div className="mt-6 flex flex-col items-center gap-2" {...item(4)}>
             <a href="#rsvp" className="btn-primary">
@@ -123,7 +123,7 @@ export function InvitationScroll({ mode, reducedMotion, tilt }: Props) {
             </a>
             <a
               href="#ceremony"
-              className="inline-flex min-h-[48px] flex-col items-center justify-center gap-1 px-4 font-caps text-[0.72rem] uppercase tracking-[0.24em] text-burgundy/80 hover:text-burgundy"
+              className="inline-flex min-h-[48px] flex-col items-center justify-center gap-1 px-4 font-caps text-[0.72rem] uppercase tracking-[0.24em] text-burgundy hover:text-burgundy-deep"
             >
               Scroll down
               <motion.span

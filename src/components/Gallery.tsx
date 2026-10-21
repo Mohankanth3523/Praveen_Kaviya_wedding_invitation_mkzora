@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { wedding, type Photo } from '../config/wedding';
 import { Picture } from './Picture';
@@ -8,6 +9,7 @@ import { Reveal } from './Reveal';
 export function Gallery() {
   const photos: Photo[] = [wedding.photos.hero, ...wedding.photos.gallery, wedding.photos.reception];
   const [index, setIndex] = useState<number | null>(null);
+  const reduced = useReducedMotion();
   const dialog = useRef<HTMLDialogElement>(null);
   const opener = useRef<HTMLElement | null>(null);
 
@@ -39,11 +41,11 @@ export function Gallery() {
   }, [step]);
 
   return (
-    <section id="gallery" aria-labelledby="gallery-title" className="on-dark scroll-mt-16 bg-stone px-4 py-[clamp(4rem,10vw,7rem)]">
+    <section id="gallery" aria-labelledby="gallery-title" className="surface-plum toran-top scroll-mt-16 px-4 py-[clamp(4rem,10vw,7rem)]">
       <div className="mx-auto max-w-6xl">
         <Reveal className="text-center">
-          <p className="eyebrow text-gold-light">Cherished frames</p>
-          <h2 id="gallery-title" className="gold-foil mt-3 font-caps text-[clamp(1.6rem,1.2rem+1.8vw,2.6rem)] uppercase tracking-[0.18em]">
+          <p className="eyebrow text-[#F6D98E]">Cherished frames</p>
+          <h2 id="gallery-title" className="gold-foil-light mt-3 font-caps text-[clamp(1.6rem,1.2rem+1.8vw,2.6rem)] uppercase tracking-[0.18em]">
             Gallery
           </h2>
           <div className="frieze mx-auto mt-5 w-64" aria-hidden="true" />
@@ -71,29 +73,39 @@ export function Gallery() {
       <dialog
         ref={dialog}
         aria-label="Photo viewer"
-        className="m-auto max-h-[100svh] max-w-[100vw] bg-transparent p-0 backdrop:bg-stone/95"
+        className="m-auto max-h-[100svh] max-w-[100vw] bg-transparent p-0 backdrop:bg-pearl/95 backdrop:backdrop-blur-sm"
         onClick={(e) => {
           if (e.target === dialog.current) close();
         }}
       >
         {index !== null && (
           <div className="relative flex h-[100svh] w-[100vw] items-center justify-center p-4 sm:p-10">
-            <Picture
-              photo={photos[index]}
-              sizes="100vw"
-              eager
-              imgClassName="max-h-[calc(100svh-6rem)] w-auto max-w-full object-contain shadow-2xl ring-1 ring-gold/50"
-            />
-            <button type="button" onClick={close} aria-label="Close photo" className="on-dark absolute right-3 top-3 inline-flex h-12 w-12 items-center justify-center rounded-full border border-gold/50 bg-stone/70 text-ivory">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={index}
+                initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={reduced ? { opacity: 0 } : { opacity: 0, scale: 1.02 }}
+                transition={{ duration: reduced ? 0.15 : 0.45, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <Picture
+                  photo={photos[index]}
+                  sizes="100vw"
+                  eager
+                  imgClassName="max-h-[calc(100svh-6rem)] w-auto max-w-full rounded-[4px] object-contain shadow-[0_40px_80px_-40px_rgba(117,68,87,0.6)] ring-1 ring-gold/50"
+                />
+              </motion.div>
+            </AnimatePresence>
+            <button type="button" onClick={close} aria-label="Close photo" className="absolute right-3 top-3 inline-flex h-12 w-12 items-center justify-center rounded-full border border-gold/60 bg-panel text-burgundy shadow-petal transition-colors hover:bg-blush">
               <X size={20} aria-hidden="true" />
             </button>
-            <button type="button" onClick={() => step(-1)} aria-label="Previous photo" className="on-dark absolute left-2 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-gold/50 bg-stone/70 text-ivory sm:left-5">
+            <button type="button" onClick={() => step(-1)} aria-label="Previous photo" className="absolute left-2 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-gold/60 bg-panel text-burgundy shadow-petal transition-colors hover:bg-blush sm:left-5">
               <ChevronLeft size={22} aria-hidden="true" />
             </button>
-            <button type="button" onClick={() => step(1)} aria-label="Next photo" className="on-dark absolute right-2 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-gold/50 bg-stone/70 text-ivory sm:right-5">
+            <button type="button" onClick={() => step(1)} aria-label="Next photo" className="absolute right-2 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-gold/60 bg-panel text-burgundy shadow-petal transition-colors hover:bg-blush sm:right-5">
               <ChevronRight size={22} aria-hidden="true" />
             </button>
-            <p className="absolute bottom-4 left-1/2 -translate-x-1/2 font-caps text-[0.75rem] tracking-[0.2em] text-ivory/80">
+            <p className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-panel/90 px-3 py-1 font-caps text-[0.75rem] tracking-[0.2em] text-burgundy">
               {index + 1} / {photos.length}
             </p>
           </div>
@@ -108,14 +120,14 @@ function PhotoButton({ photo, sizes, onOpen }: { photo: Photo; sizes: string; on
     <button
       type="button"
       onClick={(e) => onOpen(e.currentTarget)}
-      className="frame-double group block w-full overflow-hidden bg-[#2a211c] p-[5px] sm:p-[8px]"
+      className="frame-double group block w-full overflow-hidden rounded-[6px] bg-panel p-[5px] shadow-petal transition-shadow duration-500 hover:shadow-petal-lg sm:p-[8px]"
       aria-label={`View photo larger: ${photo.alt}`}
     >
       <span className="block overflow-hidden" style={{ aspectRatio: `${photo.width} / ${photo.height}` }}>
         <Picture
           photo={photo}
           sizes={sizes}
-          imgClassName="block h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"
+          imgClassName="block h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
         />
       </span>
     </button>

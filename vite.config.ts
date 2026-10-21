@@ -14,9 +14,9 @@ export default defineConfig({
     chunkSizeWarningLimit: 1200,
     rollupOptions: {
       output: {
+        // The Three.js temple stage is no longer loaded (see src/app/App.tsx),
+        // so only the animation library gets its own chunk.
         manualChunks: {
-          three: ['three'],
-          r3f: ['@react-three/fiber', '@react-three/drei'],
           motion: ['framer-motion'],
         },
       },

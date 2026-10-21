@@ -42,8 +42,10 @@ export function SiteNav({ visible }: { visible: boolean }) {
     <AnimatePresence>
       {visible && (
         <motion.header
-          className={`on-dark fixed inset-x-0 top-0 z-40 transition-colors duration-500 ${
-            solid || open ? 'bg-stone/90 shadow-[0_1px_0_rgba(198,161,91,0.25)] backdrop-blur-md' : 'bg-transparent'
+          className={`fixed inset-x-0 top-0 z-40 border-b backdrop-blur-md transition-[background-color,box-shadow,border-color] duration-500 ${
+            solid || open
+              ? 'border-gold/40 bg-pearl/95 shadow-[0_8px_24px_-18px_rgba(117,68,87,0.45)]'
+              : 'border-gold/25 bg-pearl/80'
           }`}
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -51,15 +53,15 @@ export function SiteNav({ visible }: { visible: boolean }) {
           transition={{ duration: 0.8 }}
         >
           <nav aria-label="Invitation sections" className="mx-auto flex h-16 max-w-6xl items-center justify-between pl-4 pr-16 sm:pl-6 sm:pr-20">
-            <a href="#invitation" className="font-display text-xl italic text-ivory" aria-label="Back to the invitation">
-              P <span className="not-italic text-gold-light">&amp;</span> K
+            <a href="#invitation" className="font-display text-xl italic text-burgundy" aria-label="Back to the invitation">
+              P <span className="not-italic text-gold-dark">&amp;</span> K
             </a>
             <ul className="hidden items-center gap-1 md:flex">
               {LINKS.map((l) => (
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="inline-flex min-h-[44px] items-center px-2.5 font-caps text-[0.7rem] uppercase tracking-[0.18em] text-ivory/85 transition-colors hover:text-gold-light"
+                    className="relative inline-flex min-h-[44px] items-center px-2.5 font-caps text-[0.7rem] uppercase tracking-[0.18em] text-burgundy transition-colors after:absolute after:inset-x-2.5 after:bottom-2 after:h-px after:origin-center after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:text-gold-dark hover:after:scale-x-100"
                   >
                     {l.label}
                   </a>
@@ -69,7 +71,7 @@ export function SiteNav({ visible }: { visible: boolean }) {
             <button
               ref={menuButton}
               type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ivory md:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-burgundy transition-colors hover:bg-blush md:hidden"
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? 'Close menu' : 'Open menu'}
@@ -82,7 +84,7 @@ export function SiteNav({ visible }: { visible: boolean }) {
             {open && (
               <motion.ul
                 id="mobile-menu"
-                className="border-t border-gold/20 px-4 pb-4 md:hidden"
+                className="overflow-hidden border-t border-petal bg-pearl/95 px-4 pb-4 md:hidden"
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
@@ -92,7 +94,7 @@ export function SiteNav({ visible }: { visible: boolean }) {
                     <a
                       href={l.href}
                       onClick={() => setOpen(false)}
-                      className="flex min-h-[48px] items-center justify-center font-caps text-sm uppercase tracking-[0.24em] text-ivory/90"
+                      className="flex min-h-[48px] items-center justify-center font-caps text-sm uppercase tracking-[0.24em] text-burgundy transition-colors hover:text-gold-dark"
                     >
                       {l.label}
                     </a>

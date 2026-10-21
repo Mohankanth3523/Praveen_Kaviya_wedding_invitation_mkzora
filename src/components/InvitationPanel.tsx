@@ -45,7 +45,7 @@ export function InvitationPanel({ open, onClose, onMessage }: { open: boolean; o
     <dialog
       ref={ref}
       aria-labelledby="full-invitation-title"
-      className="m-auto w-[min(40rem,calc(100vw-1.5rem))] max-h-[calc(100svh-1.5rem)] overflow-y-auto rounded-sm bg-transparent p-0 text-burgundy backdrop:bg-stone/80 backdrop:backdrop-blur-sm"
+      className="m-auto w-[min(40rem,calc(100vw-1.5rem))] max-h-[calc(100svh-1.5rem)] overflow-y-auto rounded-sm bg-transparent p-0 text-burgundy backdrop:bg-[#49333D]/45 backdrop:backdrop-blur-sm"
       onClick={(e) => {
         if (e.target === ref.current) ref.current?.close();
       }}
@@ -54,7 +54,7 @@ export function InvitationPanel({ open, onClose, onMessage }: { open: boolean; o
         <button
           type="button"
           onClick={() => ref.current?.close()}
-          className="absolute right-5 top-5 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full text-burgundy hover:bg-burgundy/5"
+          className="absolute right-5 top-5 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full text-burgundy transition-colors hover:bg-blush"
           aria-label="Close invitation"
         >
           <X size={20} aria-hidden="true" />
@@ -124,7 +124,7 @@ export function InvitationPanel({ open, onClose, onMessage }: { open: boolean; o
           <div className="mt-3 grid gap-4 sm:grid-cols-2">
             {[family.groom, family.bride].map((person) => (
               <div key={person.name}>
-                <p className="font-caps text-[0.78rem] uppercase tracking-[0.2em] text-burgundy/80">{person.role}</p>
+                <p className="font-caps text-[0.78rem] uppercase tracking-[0.2em] text-gold-dark">{person.role}</p>
                 <p className="font-display text-xl font-semibold">{person.name}</p>
                 {person.qualifications && <p>{person.qualifications}</p>}
                 {person.parents.map((line) => (

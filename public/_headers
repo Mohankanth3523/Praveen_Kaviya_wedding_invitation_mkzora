@@ -11,3 +11,8 @@
 
 /index.html
   Cache-Control: no-cache
+
+# Social preview image: short cache so a replaced image reaches crawlers quickly.
+/og-image.jpg
+  Content-Type: image/jpeg
+  Cache-Control: public, max-age=3600
